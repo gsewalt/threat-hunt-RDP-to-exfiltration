@@ -234,6 +234,14 @@ Implement JIT RDP access, improve anomaly detection, strengthen SOC alerts for D
 
 ---
 
+## MITRE ATT&CK Mapping
+
+| Phase | Observed Activity | MITRE Technique ID | Technique Name |
+|-------|-----------------|-----------------|----------------|
+| **Initial Access** | RDP brute-force leading to successful login | T1078 | Valid Accounts |
+| **Execution** | Malicious `msupdate.exe` executed via PowerShell | T1059.001 | PowerShell |
+| **Persistence** | Scheduled task `MicrosoftUpdateSync` created | T1053.005 | Scheduled Task/Job: S
+
 ### Notes
 
 This narrative-driven investigation demonstrates how detailed SOC monitoring, careful log analysis, and KQL proficiency can reconstruct an entire attack lifecycle from initial RDP brute force to data exfiltration.
