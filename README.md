@@ -179,6 +179,24 @@ DeviceNetworkEvents
 
 ---
 
+## MITRE ATT&CK Mapping
+
+To better contextualize the attacker’s actions, we mapped each observed behavior to corresponding MITRE ATT&CK tactics and techniques. This allows SOC analysts to quickly understand the adversary’s methods and improve detection, response, and reporting.
+
+| Phase | Observed Activity | MITRE Technique ID | Technique Name |
+|-------|-----------------|-----------------|----------------|
+| **Initial Access** | RDP brute-force leading to successful login | T1078 | Valid Accounts |
+| **Execution** | Malicious `msupdate.exe` executed via PowerShell | T1059.001 | PowerShell |
+| **Persistence** | Scheduled task `MicrosoftUpdateSync` created | T1053.005 | Scheduled Task/Job: Scheduled Task |
+| **Defense Evasion** | Microsoft Defender exclusion for `C:\Windows\Temp` | T1562.001 | Impair Defenses: Disable or Modify Tools |
+| **Discovery** | Host enumeration using `systeminfo`, `ipconfig`, `net user` | T1082, T1016, T1087 | System Information Discovery, Network Service Scanning, Account Discovery |
+| **Collection** | Data archives created (`.zip`) for exfiltration | T1560 | Archive Collected Data |
+| **Command and Control / Exfiltration** | Connections to `185.92.220.87` over ports 80 and 8081 | T1041, T1071.001 | Exfiltration Over C2 Channel, Application Layer Protocol: Web Protocols |
+
+> Mapping these activities to MITRE ATT&CK provides a structured view of the attack lifecycle, highlighting how each tactic was employed and guiding improvements in detection and response.
+
+---
+
 ## Chronological Event Timeline (Narrative)
 
 1. **2025-09-12:** Brute force attempts commence, probing RDP logins.
@@ -233,22 +251,6 @@ Implement JIT RDP access, improve anomaly detection, strengthen SOC alerts for D
 * Alert on outbound connections to uncommon ports (e.g., 8081).
 
 ---
-
----
-
-## MITRE ATT&CK Mapping
-
-| Phase | Observed Activity | MITRE Technique ID | Technique Name |
-|-------|-----------------|-----------------|----------------|
-| **Initial Access** | RDP brute-force leading to successful login | T1078 | Valid Accounts |
-| **Execution** | Malicious `msupdate.exe` executed via PowerShell | T1059.001 | PowerShell |
-| **Persistence** | Scheduled task `MicrosoftUpdateSync` created | T1053.005 | Scheduled Task/Job: Scheduled Task |
-| **Defense Evasion** | Microsoft Defender exclusion for `C:\Windows\Temp` | T1562.001 | Impair Defenses: Disable or Modify Tools |
-| **Discovery** | Host enumeration using `systeminfo`, `ipconfig`, `net user` | T1082, T1016, T1087 | System Information Discovery, Network Service Scanning, Account Discovery |
-| **Collection** | Data archives created (`.zip`) for exfiltration | T1560 | Archive Collected Data |
-| **Command and Control / Exfiltration** | Connections to `185.92.220.87` over ports 80 and 8081 | T1041, T1071.001 | Exfiltration Over C2 Channel, Application Layer Protocol: Web Protocols |
-
-> This mapping provides a clear link between observed attacker behavior and MITRE ATT&CK tactics/techniques, aiding detection, response, and reporting.
 
 ### Notes
 
