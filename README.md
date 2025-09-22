@@ -47,7 +47,7 @@ After reconstructing the timeline, several critical IOCs became apparent:
 ## Investigation Narrative & KQL Queries
 
 ### Query 1 — Initial Access Detection (RDP logons)
-
+**Timeframe:** 2025-09-12 23:50 UTC → 2025-09-13 00:53 UTC
 ```kql
 DeviceLogonEvents
 | where ActionType has_any ("LogonFailed", "LogonSuccess")
@@ -65,7 +65,7 @@ DeviceLogonEvents
 ---
 
 ### Query 2 — Malicious Execution (`msupdate.exe`)
-
+**Execution Time:** 2025-09-16 12:38:40 UTC
 ```kql
 DeviceProcessEvents
 | where Timestamp between (datetime(2025-09-16 11:40:57) .. datetime(2025-09-16 23:59:59))
@@ -84,7 +84,7 @@ DeviceProcessEvents
 ---
 
 ### Query 3 — Persistence (Scheduled Task registration)
-
+**Scheduled Task Creation:** 2025-09-16 12:39:45 UTC
 ```kql
 DeviceRegistryEvents
 | where DeviceName == "slflarewinsysmo"
@@ -102,7 +102,7 @@ DeviceRegistryEvents
 ---
 
 ### Query 4 — Detection Avoidance (Defender exclusion)
-
+**Registry Exclusion Added:** 2025-09-16 12:39:48 UTC
 ```kql
 DeviceRegistryEvents
 | where DeviceName == "slflarewinsysmo"
@@ -120,7 +120,7 @@ DeviceRegistryEvents
 ---
 
 ### Query 5 — Host Enumeration (built-in tools)
-
+**Enumeration Start:** 2025-09-16 12:40:28 UTC
 ```kql
 DeviceProcessEvents
 | where Timestamp between (datetime(2025-09-16 12:39:48) .. datetime(2025-09-16 12:50:00))
@@ -139,7 +139,9 @@ DeviceProcessEvents
 ---
 
 ### Query 6 — Data Archive Creation (for exfil)
-
+**Archive Creation Times:**
+backup_sync.zip: 2025-09-16 12:41:30 UTC
+employee-data-20250916204931.zip: 2025-09-16 13:49:43 UTC
 ```kql
 DeviceFileEvents
 | where Timestamp between (datetime(2025-09-16 12:40:28) .. datetime(2025-09-16 14:00:00))
@@ -158,7 +160,9 @@ DeviceFileEvents
 ---
 
 ### Query 7 — External Server Connection & Data Exfiltration
-
+**Exfiltration Times:**
+Port 80: 2025-09-16 12:42:17 UTC
+Port 8081: 2025-09-16 12:42:26 UTC
 ```kql
 DeviceNetworkEvents
 | where Timestamp between (datetime(2025-09-16 12:41:00) .. datetime(2025-09-16 13:00:00))
