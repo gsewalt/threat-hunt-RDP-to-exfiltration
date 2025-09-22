@@ -28,22 +28,6 @@ This investigation walks through the entire attack lifecycle: from initial acces
 
 ---
 
-## Incident Response Lifecycle Overview
-
-This investigation follows a structured SOC incident response lifecycle, aligned with **NIST Special Publication 800-61 Revision 2: Computer Security Incident Handling Guide**. Using this framework ensures thorough analysis, effective mitigation, and documentation of attacker activity. Key phases include:
-
-1. **Identification** – Detect unusual RDP login activity and potential compromise indicators.  
-2. **Containment** – Limit attacker movement by isolating affected systems and accounts.  
-3. **Eradication** – Remove malicious files, scheduled tasks, and disable detection evasion techniques.  
-4. **Investigation & Analysis** – Use logs, KQL queries, and endpoint data to reconstruct attacker activity and establish Indicators of Compromise (IOCs).  
-5. **Recovery** – Restore affected systems to a known good state and resume normal operations.  
-6. **Lessons Learned & Reporting** – Document the attack lifecycle, map MITRE techniques, and provide actionable recommendations to improve security posture.
-
-> Framing the report with the NIST-aligned lifecycle ensures each phase of the attack is systematically analyzed and addressed, enhancing credibility and professional rigor.
-
-
----
-
 ## Quick Findings (Key IOCs)
 
 After reconstructing the timeline, several critical IOCs became apparent:
