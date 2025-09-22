@@ -1,4 +1,4 @@
-<img height="400" alt="unnamed" src="https://github.com/user-attachments/assets/e16a0fc3-0f8d-4b8d-8c66-59844544654d" />
+<img height="512" alt="unnamed" src="https://github.com/user-attachments/assets/e16a0fc3-0f8d-4b8d-8c66-59844544654d" />
 
 # Threat Hunt Report: RDP Compromise to Data Exfiltration Incident
 
