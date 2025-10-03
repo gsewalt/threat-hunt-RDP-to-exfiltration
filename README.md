@@ -1,7 +1,6 @@
 <img height="512" alt="unnamed" src="https://github.com/user-attachments/assets/e16a0fc3-0f8d-4b8d-8c66-59844544654d" />
 
-# Threat Hunt Report: RDP Compromise to Data Exfiltration Incident
-**[Investigation Report](https://github.com/gsewalt/threat-hunt-RDP-to-exfiltration/blob/main/soc-investigation-report.pdf)**
+# Incident Response: Data Exfiltration via RDP Incident
 
 * **Report ID:** INC-2025-XXXX
 * **Analyst:** Gregory Sewalt
